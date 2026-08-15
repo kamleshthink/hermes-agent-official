@@ -453,5 +453,8 @@ VOLUME [ "/opt/data" ]
 # supervised PID-1 path and the non-PID-1 fallback path. Without the
 # wrapper-as-ENTRYPOINT, leading-dash args like `--version` would be
 # intercepted by /init's POSIX shell.
-ENTRYPOINT [ "/opt/hermes/docker/entrypoint-dispatch.sh" ]
+# Render deployment uses a simplified entrypoint that bypasses s6-overlay
+# (which fails on Render's container runtime). It seeds the DeepSeek config
+# and runs `hermes gateway` directly.
+ENTRYPOINT [ "/bin/sh", "/opt/hermes/docker/render-entrypoint.sh" ]
 CMD [ ]
