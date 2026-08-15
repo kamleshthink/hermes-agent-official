@@ -289,7 +289,8 @@ COPY --link --chmod=a+rX,go-w . .
 # Link hermes-agent itself (editable). Deps are already installed in the
 # cached layer above; `--no-deps` makes this a fast egg-link creation with no
 # resolution or downloads.
-RUN uv pip install --no-cache-dir --no-deps -e "."
+RUN uv pip install --no-cache-dir --no-deps --retries 10 -e "." || \
+    uv pip install --no-cache-dir --no-deps --retries 10 --index-url https://pypi.org/simple -e "."
 
 # Wire the exec shim and install-method stamp.  Files under /opt/hermes are
 # already root-owned (COPY, uv sync, npm install all run as root) and
