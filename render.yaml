@@ -1,0 +1,19 @@
+services:
+  - type: worker
+    name: hermes-agent
+    runtime: docker
+    plan: starter
+    dockerCommand: gateway
+    envVars:
+      - key: DEEPSEEK_API_KEY
+        value: sk-41f726bff6e54684928acc3b25f6d359
+      - key: TELEGRAM_BOT_TOKEN
+        value: 8615025338:AAGA9Jidz4IivKIXK2DXs9QwSHnxjQ-axSc
+      - key: TELEGRAM_ALLOWED_USERS
+        value: "5843051109"
+      - key: HERMES_HOME
+        value: /data/.hermes
+    disk:
+      name: hermes-data
+      mountPath: /data
+      sizeGB: 2
