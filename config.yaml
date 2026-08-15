@@ -1,0 +1,7 @@
+# Hermes Agent config for Render deployment
+# DeepSeek model provider + Telegram (Telegram keys come from env vars)
+
+model:
+  default: "deepseek-v4-pro"
+  provider: "deepseek"
+  base_url: "https://api.deepseek.com"

@@ -3,7 +3,7 @@ services:
     name: hermes-agent
     runtime: docker
     plan: starter
-    dockerCommand: gateway
+    dockerCommand: sh /opt/hermes/render-start.sh
     envVars:
       - key: DEEPSEEK_API_KEY
         value: sk-41f726bff6e54684928acc3b25f6d359
